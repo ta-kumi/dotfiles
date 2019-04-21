@@ -1,2 +1,4 @@
-# dotfiles
-dotfiles
+# 使用方法
+
+install.sh を実行
+
