@@ -60,7 +60,7 @@ set wildmenu
 "" 保存するコマンド履歴の数
 set history=5000
 
-" Tab系
+" インデント系
 "" インデントにTabを使用
 set noexpandtab
 "" 画面上でタブ文字が占める幅
@@ -74,7 +74,13 @@ set smarttab
 "" 改行時に前の行の構文をチェックし次の行のインデントを増減する
 set smartindent
 "" smartindentで増減する幅
-set shiftwidth=4
+set shiftwidth=8
+"" ファイル別インデント設定
+augroup fileTypeIndent
+	autocmd!
+	autocmd BufNewFile,BufRead *.py setlocal expandtab tabstop=4 softtabstop=4 shiftwidth=4
+	autocmd BufNewFile,BufRead *.rb setlocal expandtab tabstop=2 softtabstop=2 shiftwidth=2
+augroup END
 
 
 " 検索系
