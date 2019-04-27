@@ -10,7 +10,10 @@ repo = 'bronson/vim-trailing-whitespace'
 ## インデント表示
 [[plugins]]
 repo = 'Yggdroot/indentLine'
-
+## ステータスライン強化
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+repo = 'vim-airline/vim-airline-themes'
 
 # コーディング支援系
 ## カッコ自動補完
