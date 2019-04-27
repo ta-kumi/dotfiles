@@ -28,6 +28,9 @@ repo = 'junegunn/vim-easy-align'
 ## コメントの切り替え
 [[plugins]]
 repo = 'scrooloose/nerdcommenter'
+## 検索時にヒット数を表示する
+[[plugins]]
+repo = 'osyo-manga/vim-anzu'
 
 # git系
 ## gitの便利操作がvimで出来る Gblameなど

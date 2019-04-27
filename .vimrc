@@ -63,8 +63,19 @@ set number
 set showmatch
 "" 括弧入力強調時間
 set matchtime=1
-"" ステータスラインを常に表示
-set laststatus=2
+"" 全角スペースの表示
+function! ZenkakuSpace()
+	highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
+endfunction
+
+if has('syntax')
+	augroup ZenkakuSpace
+		autocmd!
+		autocmd ColorScheme * call ZenkakuSpace()
+		autocmd VimEnter,WinEnter,BufRead * let w:m1=matchadd('ZenkakuSpace', '　')
+	augroup END
+	call ZenkakuSpace()
+endif
 "" コマンドモードの補完
 set wildmenu
 "" 保存するコマンド履歴の数
@@ -102,7 +113,7 @@ set smartcase
 "" 検索結果をハイライト
 set hlsearch
 "" ESC連打でハイライト解除
-nmap <Esc><Esc> :nohlsearch<CR><Esc>
+nmap <Esc><Esc><Esc> :nohlsearch<CR><Esc>
 
 " マウス操作の有効化
 if has('mouse')
@@ -144,8 +155,6 @@ nmap <C-l> :Gtags -f %<CR>
 nmap <C-j> :Gtags <C-r><C-w><CR>
 "" カーソル以下の使用箇所一覧
 nmap <C-k> :Gtags -r <C-r><C-w><CR>
-"" カーソル以下の単語検索
-nmap <C-h> :GtagsCursor<CR>
 "" 次の検索結果へジャンプ
 nmap <C-n> :cn<CR>
 "" 前の検索結果へジャンプ
@@ -204,22 +213,21 @@ vmap <Enter> <Plug>(EasyAlign)
 let g:NERDSpaceDelims=1
 """ コメントを左に並べる
 let g:NERDDefaultAlign='left'
-"" コード自動補完系
-if dein#tap('neocomplete.vim')
-	" Vim起動時にneocompleteを有効にする
-	let g:neocomplete#enable_at_startup = 1
-	" smartcase有効化. 大文字が入力されるまで大文字小文字の区別を無視する
-	let g:neocomplete#enable_smart_case = 1
-	" 3文字以上の単語に対して補完を有効にする
-	let g:neocomplete#min_keyword_length = 3
-	" 区切り文字まで補完する
-	let g:neocomplete#enable_auto_delimiter = 1
-	" 1文字目の入力から補完のポップアップを表示
-	let g:neocomplete#auto_completion_start_length = 1
-	" バックスペースで補完のポップアップを閉じる
-	inoremap <expr><BS> neocomplete#smart_close_popup()."<C-h>"
-	" エンターキーで補完候補の確定. スニペットの展開もエンターキーで確定
-	imap <expr><CR> neosnippet#expandable() ? "<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "<C-y>" : "<CR>"
-	" タブキーで補完候補の選択. スニペット内のジャンプもタブキーでジャンプ
-	imap <expr><TAB> pumvisible() ? "<C-n>" : neosnippet#jumpable() ? "<Plug>(neosnippet_expand_or_jump)" : "<TAB>"
-endif
+"" vim-anzu
+nmap n <Plug>(anzu-n-with-echo)
+nmap N <Plug>(anzu-N-with-echo)
+nmap * <Plug>(anzu-star-with-echo)
+nmap # <Plug>(anzu-sharp-with-echo)
+nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
+set statusline=%{anzu#search_status()}
+"" vim-over
+""" 全体置換
+nnoremap <silent> <C-h> :OverCommandLine<CR>%s//g<Left><Left>
+""" 選択範囲置換
+vnoremap <silent> <C-h> :OverCommandLine<CR>s//g<Left><Left>
+""" カーソル以下の単語置換
+nnoremap <silent> <C-h><C-h> :OverCommandLine<CR>%s/<C-r><C-w>//g<Left><Left>
+""" ステータスライン強化
+set laststatus=2
+set showtabline=2
+let g:airline_theme = 'molokai'
