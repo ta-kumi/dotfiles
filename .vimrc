@@ -1,7 +1,7 @@
 " setting
 "" ファイル読み込み時の文字コード
 set encoding=utf-8
-"" マルチバイトを扱う際の設定j
+"" マルチバイトを扱う際の設定
 scriptencoding utf-8
 "" 保存時の文字コード
 set fileencoding=utf-8
@@ -35,6 +35,22 @@ nnoremap j gj
 nnoremap k gk
 nnoremap <down> gj
 nnoremap <up> gk
+"" モードによってカーソルを変化させる
+if has('vim_starting')
+	" 挿入モード時に非点滅の縦棒タイプのカーソル
+	let &t_SI .= "\e[6 q"
+	" ノーマルモード時に非点滅のブロックタイプのカーソル
+	let &t_EI .= "\e[2 q"
+	" 置換モード時に非点滅の下線タイプのカーソル
+	let &t_SR .= "\e[4 q"
+endif
+
+
+" キー設定
+""" スペースキーを使用しない
+noremap <Space> <Nop>
+"" <Leader>キーの割当
+let mapleader = "\<Space>"
 "" バックスペースキーの有効化
 set backspace=indent,eol,start
 
@@ -43,18 +59,6 @@ set backspace=indent,eol,start
 syntax enable
 """ 行番号を表示
 set number
-"" 空白文字表示
-set list
-"" Tabを表示形式
-set listchars=tab:»-
-"" Tab文字色設定
-hi SpecialKey ctermbg=None ctermfg=59
-"" 行末スペース強調
-augroup HighlightTrailingSpaces
-  autocmd!
-  autocmd VimEnter,WinEnter,ColorScheme * highlight TrailingSpaces term=underline guibg=Red ctermbg=Red
-  autocmd VimEnter,WinEnter * match TrailingSpaces /\s\+$/
-augroup END　
 "" 括弧入力時に対応するカーソルを強調
 set showmatch
 "" 括弧入力強調時間
@@ -85,7 +89,6 @@ set shiftwidth=8
 augroup fileTypeIndent
 	autocmd!
 	autocmd BufNewFile,BufRead *.py setlocal expandtab tabstop=4 softtabstop=4 shiftwidth=4
-	autocmd BufNewFile,BufRead *.rb setlocal expandtab tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
 
@@ -104,12 +107,14 @@ nmap <Esc><Esc> :nohlsearch<CR><Esc>
 " マウス操作の有効化
 if has('mouse')
 	set mouse=a
-	if has('mouse_sgr')
-		set ttymouse=sgr
-	elseif v:version > 703 || v:version is 703 && has('patch632') " I couldn't use has('mouse_sgr') :-(
-		set ttymouse=sgr
-	else
-		set ttymouse=xterm2
+	if !has('nvim')
+		if has('mouse_sgr')
+			set ttymouse=sgr
+		elseif v:version > 703 || v:version is 703 && has('patch632')
+			set ttymouse=sgr
+		else
+			set ttymouse=xterm2
+		endif
 	endif
 endif
 
@@ -146,3 +151,75 @@ nmap <C-n> :cn<CR>
 "" 前の検索結果へジャンプ
 nmap <C-p> :cp<CR>
 
+" dein
+"" dein基本設定
+if &compatible
+	set nocompatible " Be iMproved
+endif
+let s:dein_path = expand('~/.vim/dein')
+let s:dein_repo_path = s:dein_path . '/repos/github.com/Shougo/dein.vim'
+"" dein.vim がなければ github からclone
+if &runtimepath !~# '/dein.vim'
+	if !isdirectory(s:dein_repo_path)
+		execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_path
+	endif
+	execute 'set runtimepath^=' . fnamemodify(s:dein_repo_path, ':p')
+endif
+if dein#load_state(s:dein_path)
+	call dein#begin(s:dein_path)
+	let g:config_dir = expand('~/.vim/dein/userconfig')
+	let s:toml       = g:config_dir . '/plugins.toml'
+	let s:lazy_toml  = g:config_dir . '/plugins_lazy.toml'
+	" TOML 読み込み
+	call dein#load_toml(s:toml,      {'lazy': 0})
+	call dein#load_toml(s:lazy_toml, {'lazy': 1})
+	call dein#end()
+	call dein#save_state()
+endif
+filetype plugin indent on
+syntax enable
+"" インストールされていないプラグインがあればインストールする
+if dein#check_install()
+	call dein#install()
+endif
+set t_Co=256
+
+" プラグイン設定一覧
+"" molokai
+if dein#tap('molokai')
+	colorscheme molokai
+	autocmd GUIEnter * colorscheme molokai
+endif
+"" indentLine
+:set list lcs=tab:\|\ 
+let g:indentLine_leadingSpaceEnabled = 1
+let g:indentLine_color_term = 237
+let g:indentLine_leadingSpaceChar = '･'
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+"" vim-easy-align
+""" enterで整形設定に行くようにする
+vmap <Enter> <Plug>(EasyAlign)
+"" nerdcommenter
+""" コメントにスペースを開ける
+let g:NERDSpaceDelims=1
+""" コメントを左に並べる
+let g:NERDDefaultAlign='left'
+"" コード自動補完系
+if dein#tap('neocomplete.vim')
+	" Vim起動時にneocompleteを有効にする
+	let g:neocomplete#enable_at_startup = 1
+	" smartcase有効化. 大文字が入力されるまで大文字小文字の区別を無視する
+	let g:neocomplete#enable_smart_case = 1
+	" 3文字以上の単語に対して補完を有効にする
+	let g:neocomplete#min_keyword_length = 3
+	" 区切り文字まで補完する
+	let g:neocomplete#enable_auto_delimiter = 1
+	" 1文字目の入力から補完のポップアップを表示
+	let g:neocomplete#auto_completion_start_length = 1
+	" バックスペースで補完のポップアップを閉じる
+	inoremap <expr><BS> neocomplete#smart_close_popup()."<C-h>"
+	" エンターキーで補完候補の確定. スニペットの展開もエンターキーで確定
+	imap <expr><CR> neosnippet#expandable() ? "<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "<C-y>" : "<CR>"
+	" タブキーで補完候補の選択. スニペット内のジャンプもタブキーでジャンプ
+	imap <expr><TAB> pumvisible() ? "<C-n>" : neosnippet#jumpable() ? "<Plug>(neosnippet_expand_or_jump)" : "<TAB>"
+endif

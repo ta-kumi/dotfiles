@@ -1,6 +1,8 @@
 # 環境変数
 ## 日本語設定
 export LANG=ja_JP.UTF-8
+## XDG configuration
+export XDG_CONFIG_HOME=$HOME/.config
 
 # 色設定
 ## 色を使用
@@ -13,14 +15,14 @@ export LS_COLORS='di=36;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # lsがカラー表示になるようエイリアスを設定
 case "${OSTYPE}" in
-darwin*)
-  # Mac
-  alias ls="ls -GF"
-  ;;
-linux*)
-  # Linux
-  alias ls='ls -F --color'
-  ;;
+	 darwin*)
+		  # Mac
+		  alias ls="ls -GF"
+		  ;;
+	 linux*)
+		  # Linux
+		  alias ls='ls -F --color'
+		  ;;
 esac
 
 # プロンプト系

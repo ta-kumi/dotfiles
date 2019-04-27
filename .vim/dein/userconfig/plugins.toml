@@ -1,0 +1,38 @@
+# 起動時に読み込むプラグイン集
+
+# 見た目系
+## molokaiカラースキーム
+[[plugins]]
+repo = 'tomasr/molokai'
+## 末尾の全角と半角の空白文字を可視化
+[[plugins]]
+repo = 'bronson/vim-trailing-whitespace'
+## インデント表示
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+
+
+# コーディング支援系
+## カッコ自動補完
+[[plugins]]
+repo = 'jiangmiao/auto-pairs'
+## f検索の際にハイライトをつける
+[[plugins]]
+repo = 'rhysd/clever-f.vim'
+## syntaxエラーチェック
+[[plugins]]
+repo = 'scrooloose/syntastic'
+## コード整形
+[[plugins]]
+repo = 'junegunn/vim-easy-align'
+## コメントの切り替え
+[[plugins]]
+repo = 'scrooloose/nerdcommenter'
+
+# git系
+## gitの便利操作がvimで出来る Gblameなど
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+## gitの変更箇所を左側に表示してくれる
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
