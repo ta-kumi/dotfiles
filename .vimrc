@@ -1,7 +1,7 @@
 " setting
 "" ファイル読み込み時の文字コード
 set encoding=utf-8
-"" マルチバイトを扱う際の設定
+"" マルチバイトを扱う際の設定j
 scriptencoding utf-8
 "" 保存時の文字コード
 set fileencoding=utf-8
@@ -21,12 +21,16 @@ set autoread
 set hidden
 "" 入力中のコマンドをステータスに表示する
 set showcmd
+
 " カーソル系
 "" カーソルの左右移動で行末から次の行の行頭への移動が可能になる
 set whichwrap=b,s,h,l,<,>,[,],~
-"" 行番号を表示
-set number
-"" 行が折り返し表示されていた場合、行単位ではなく表示行単位でカーソルを移動する
+" 挿入モードでも上下左右移動可能
+:imap <c-h> <Left>
+:imap <c-j> <Down>
+:imap <c-k> <Up>
+:imap <c-l> <Right>
+" 行が折り返し表示されていた場合、行単位ではなく表示行単位でカーソルを移動する
 nnoremap j gj
 nnoremap k gk
 nnoremap <down> gj
@@ -37,6 +41,8 @@ set backspace=indent,eol,start
 " 見た目系
 "" シンタックスハイライトの有効化
 syntax enable
+""" 行番号を表示
+set number
 "" 空白文字表示
 set list
 "" Tabを表示形式
