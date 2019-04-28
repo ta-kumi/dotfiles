@@ -54,9 +54,11 @@ set backspace=indent,eol,start
 " 見た目系
 "" シンタックスハイライトの有効化
 syntax enable
-""" 行番号を表示
+"" 行番号を表示
 set number
-""" カッコ強調表示オフ
+"" カーソル強調表示
+set cursorline
+"" カッコ強調表示オフ
 let loaded_matchparen = 1
 "" 全角スペースの表示
 function! ZenkakuSpace()
@@ -71,6 +73,8 @@ if has('syntax')
 	augroup END
 	call ZenkakuSpace()
 endif
+
+" history系
 "" コマンドモードの補完
 set wildmenu
 "" 保存するコマンド履歴の数
@@ -138,23 +142,6 @@ if &term =~ "xterm"
 	inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
 endif
 
-
-" GNU GLOBAL(gtags)
-"" 検索結果windowを閉じる
-nmap <C-q> <C-w><C-w><C-w>q
-"" ソースコードのgrep
-nmap <C-g> :Gtags -g
-"" 開いているファイルの定義元一覧
-nmap <C-l> :Gtags -f %<CR>
-"" カーソル以下の定義元一覧
-nmap <C-j> :Gtags <C-r><C-w><CR>
-"" カーソル以下の使用箇所一覧
-nmap <C-k> :Gtags -r <C-r><C-w><CR>
-"" 次の検索結果へジャンプ
-nmap <C-n> :cn<CR>
-"" 前の検索結果へジャンプ
-nmap <C-p> :cp<CR>
-
 " dein
 "" dein基本設定
 if &compatible
@@ -187,47 +174,3 @@ if dein#check_install()
 	call dein#install()
 endif
 set t_Co=256
-
-" プラグイン設定一覧
-"" molokai
-if dein#tap('molokai')
-	colorscheme molokai
-	autocmd GUIEnter * colorscheme molokai
-	" コメントカラー変更
-	hi Comment ctermfg=102
-	hi Visual  ctermbg=236
-endif
-"" indentLine
-:set list lcs=tab:\|\ 
-let g:indentLine_leadingSpaceEnabled = 1
-let g:indentLine_color_term = 237
-let g:indentLine_leadingSpaceChar = '･'
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-"" vim-easy-align
-""" enterで整形設定に行くようにする
-vmap <Enter> <Plug>(EasyAlign)
-"" nerdcommenter
-""" コメントにスペースを開ける
-let g:NERDSpaceDelims=1
-""" コメントを左に並べる
-let g:NERDDefaultAlign='left'
-"" vim-anzu
-nmap n <Plug>(anzu-n-with-echo)
-nmap N <Plug>(anzu-N-with-echo)
-nmap * <Plug>(anzu-star-with-echo)
-nmap # <Plug>(anzu-sharp-with-echo)
-nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
-set statusline=%{anzu#search_status()}
-"" vim-over
-""" 全体置換
-nnoremap <silent> <C-h> :OverCommandLine<CR>%s//g<Left><Left>
-""" 選択範囲置換
-vnoremap <silent> <C-h> :OverCommandLine<CR>s//g<Left><Left>
-""" カーソル以下の単語置換
-nnoremap <silent> <C-h><C-h> :OverCommandLine<CR>%s/<C-r><C-w>//g<Left><Left>
-""" ステータスライン強化
-set laststatus=2
-set showtabline=2
-let g:airline_theme = 'molokai'
-""" scyank.vim'
-noremap <leader>y :Oscyank<cr>
