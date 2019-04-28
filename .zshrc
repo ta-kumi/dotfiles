@@ -4,6 +4,21 @@ export LANG=ja_JP.UTF-8
 ## XDG configuration
 export XDG_CONFIG_HOME=$HOME/.config
 
+# キー設定
+## キーバインドをemacs風に
+bindkey -e
+## Ctrl+sのロック, Ctrl+qのロック解除を無効にする
+stty stop undef
+stty start undef
+bindkey "^[[3~" delete-char
+## Ctrl+カーソルキー移動の有効化
+bindkey ";5C" forward-word
+bindkey ";5D" backward-word
+bindkey "5C" forward-word
+bindkey "5D" backward-word
+## Ctrl-Dでログアウトしない
+setopt ignoreeof
+
 # 色設定
 ## 色を使用
 autoload -Uz colors
@@ -96,22 +111,6 @@ zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
-
-
-# キー設定
-## キーバインドをemacs風に
-bindkey -e
-## Ctrl+sのロック, Ctrl+qのロック解除を無効にする
-stty stop undef
-stty start undef
-bindkey "^[[3~" delete-char
-## Ctrl+カーソルキー移動の有効化
-bindkey ";5C" forward-word
-bindkey ";5D" backward-word
-bindkey "5C" forward-word
-bindkey "5D" backward-word
-## Ctrl-Dでログアウトしない
-setopt ignoreeof
 
 # その他
 ## デフォルトシェルの設定
