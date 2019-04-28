@@ -193,6 +193,12 @@ set t_Co=256
 if dein#tap('molokai')
 	colorscheme molokai
 	autocmd GUIEnter * colorscheme molokai
+	" コメントカラー変更
+	if &term == "xterm-256color"
+		colorscheme molokai
+		hi Comment ctermfg=102
+		hi Visual  ctermbg=236
+	endif
 endif
 "" indentLine
 :set list lcs=tab:\|\ 
