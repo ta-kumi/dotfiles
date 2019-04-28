@@ -54,6 +54,8 @@ set backspace=indent,eol,start
 syntax enable
 """ 行番号を表示
 set number
+"" カーソル部分強調表示
+set cursorline
 "" 括弧入力時に対応するカーソルを強調
 set showmatch
 "" 括弧入力強調時間
@@ -194,11 +196,8 @@ if dein#tap('molokai')
 	colorscheme molokai
 	autocmd GUIEnter * colorscheme molokai
 	" コメントカラー変更
-	if &term == "xterm-256color"
-		colorscheme molokai
-		hi Comment ctermfg=102
-		hi Visual  ctermbg=236
-	endif
+	hi Comment ctermfg=102
+	hi Visual  ctermbg=236
 endif
 "" indentLine
 :set list lcs=tab:\|\ 
@@ -232,3 +231,5 @@ nnoremap <silent> <C-h><C-h> :OverCommandLine<CR>%s/<C-r><C-w>//g<Left><Left>
 set laststatus=2
 set showtabline=2
 let g:airline_theme = 'molokai'
+""" scyank.vim'
+noremap <leader>y :Oscyank<cr>

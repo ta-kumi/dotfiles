@@ -38,6 +38,9 @@ repo = 'osyo-manga/vim-anzu'
 ## 置換時のサポート
 [[plugins]]
 repo = 'osyo-manga/vim-over'
+## osc52を使用したクリップボードコピー
+[[plugins]]
+repo = 'greymd/oscyank.vim'
 
 # git系
 ## gitの便利操作がvimで出来る Gblameなど
