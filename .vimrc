@@ -56,8 +56,6 @@ set backspace=indent,eol,start
 syntax enable
 """ 行番号を表示
 set number
-"" カーソル部分強調表示
-set cursorline
 "" 括弧入力時に対応するカーソルを強調
 set showmatch
 "" 括弧入力強調時間
