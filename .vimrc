@@ -21,6 +21,8 @@ set autoread
 set hidden
 "" 入力中のコマンドをステータスに表示する
 set showcmd
+"" クリップボード貼り付け有効化
+set clipboard+=unnamedplus
 
 " カーソル系
 "" カーソルの左右移動で行末から次の行の行頭への移動が可能になる
