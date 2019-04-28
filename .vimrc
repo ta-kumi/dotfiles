@@ -56,10 +56,8 @@ set backspace=indent,eol,start
 syntax enable
 """ 行番号を表示
 set number
-"" 括弧入力時に対応するカーソルを強調
-set showmatch
-"" 括弧入力強調時間
-set matchtime=1
+""" カッコ強調表示オフ
+let loaded_matchparen = 1
 "" 全角スペースの表示
 function! ZenkakuSpace()
 	highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
