@@ -25,11 +25,6 @@ set showcmd
 " カーソル系
 "" カーソルの左右移動で行末から次の行の行頭への移動が可能になる
 set whichwrap=b,s,h,l,<,>,[,],~
-" 挿入モードでも上下左右移動可能
-:imap <A-h> <Left>
-:imap <A-j> <Down>
-:imap <A-k> <Up>
-:imap <A-l> <Right>
 " 行が折り返し表示されていた場合、行単位ではなく表示行単位でカーソルを移動する
 nnoremap j gj
 nnoremap k gk
