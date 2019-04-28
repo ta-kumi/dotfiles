@@ -16,13 +16,13 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # lsがカラー表示になるようエイリアスを設定
 case "${OSTYPE}" in
 	 darwin*)
-		  # Mac
-		  alias ls="ls -GF"
-		  ;;
+		 # Mac
+		 alias ls="ls -GF"
+		 ;;
 	 linux*)
-		  # Linux
-		  alias ls='ls -F --color'
-		  ;;
+		 # Linux
+		 alias ls='ls -F --color'
+		 ;;
 esac
 
 # プロンプト系
