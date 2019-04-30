@@ -74,7 +74,15 @@ hook_add = '''
 	let g:deoplete#enable_at_startup = 1
 	inoremap <expr><Tab> pumvisible() ? "\<DOWN>" : "\<Tab>"
 	inoremap <expr><S-Tab> pumvisible() ? "\<UP>" : "\<S-Tab>"
+
+	" 言語対応プラグイン
+	call dein#add('Shougo/neco-syntax') " 言語のキーワード補完
+	call dein#add('Shougo/neco-vim') " vimコマンドの補完
+	call dein#add('deoplete-plugins/deoplete-zsh') " zsh補完
 '''
+## gtagsからコード補完
+[[plugins]]
+repo = 'ozelentok/deoplete-gtags'
 ## カッコ自動補完
 [[plugins]]
 repo = 'jiangmiao/auto-pairs'

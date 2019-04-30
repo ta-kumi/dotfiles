@@ -48,6 +48,8 @@ endif
 noremap <Space> <Nop>
 "" <Leader>キーの割当
 let mapleader = "\<Space>"
+"" インサートモードから抜ける
+inoremap <silent> jj <ESC>
 "" バックスペースキーの有効化
 set backspace=indent,eol,start
 
