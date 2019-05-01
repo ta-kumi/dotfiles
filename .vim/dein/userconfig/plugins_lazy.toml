@@ -3,11 +3,11 @@
 # deoplete
 ## 言語のキーワード補完
 [[plugins]]
-repo = 'Shougo/neco-syntax')
-depends = ['deoplete.vim']
+repo = 'Shougo/neco-syntax'
+depends = ['deoplete.nvim']
 ## gtagsからコード補完
 [[plugins]]
 repo = 'ozelentok/deoplete-gtags'
-depends = ['deoplete.vim']
+depends = ['deoplete.nvim']
 
 
