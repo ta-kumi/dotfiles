@@ -6,11 +6,11 @@
 repo = 'tomasr/molokai'
 hook_add = '''
 	if dein#tap('molokai')
+		" コメントカラー変更
 		colorscheme molokai
 		autocmd GUIEnter * colorscheme molokai
-		" コメントカラー変更
-		hi Comment ctermfg=102
-		hi Visual  ctermbg=236
+		autocmd ColorScheme * highlight Comment ctermfg=102
+		autocmd ColorScheme *highlight Visual  ctermbg=236
 	endif
 '''
 ## 末尾の全角と半角の空白文字を可視化
