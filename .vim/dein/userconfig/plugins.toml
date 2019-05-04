@@ -74,6 +74,11 @@ hook_add = '''
 	let g:deoplete#enable_at_startup = 1
 	inoremap <expr><Tab> pumvisible() ? "\<DOWN>" : "\<Tab>"
 	inoremap <expr><S-Tab> pumvisible() ? "\<UP>" : "\<S-Tab>"
+
+	" syntax
+	call dein#add('Shougo/neco-syntax')
+	" gtags
+	call dein#add('ozelentok/deoplete-gtags')
 '''
 ## カッコ自動補完
 [[plugins]]

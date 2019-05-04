@@ -1,13 +1,2 @@
 # 特定の条件下で読み込むプラグイン集
 
-# deoplete
-## 言語のキーワード補完
-[[plugins]]
-repo = 'Shougo/neco-syntax'
-depends = ['deoplete.nvim']
-## gtagsからコード補完
-[[plugins]]
-repo = 'ozelentok/deoplete-gtags'
-depends = ['deoplete.nvim']
-
-
