@@ -107,12 +107,12 @@ setopt share_history
 ## 重複コマンドを記録しない
 setopt hist_ignore_all_dups
 ## コマンド履歴検索
-## Ctrl-P（前）/Ctrl-N（後）
+## Ctrl-Up（前）/Ctrl-Down（後）
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
-bindkey "^P" history-beginning-search-backward-end
-bindkey "^N" history-beginning-search-forward-end
+bindkey ";5A" history-beginning-search-backward-end
+bindkey ";5B" history-beginning-search-forward-end
 
 # その他
 ## デフォルトシェルの設定
