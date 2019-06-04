@@ -4,7 +4,10 @@ export LANG=ja_JP.UTF-8
 ## XDG configuration
 export XDG_CONFIG_HOME=$HOME/.config
 ## path設定
-path=($HOME/neovim/bin $path)
+path=($HOME/local/bin $path)
+path=($HOME/bin $path)
+# メタ文字対策
+setopt nonomatch
 
 # キー設定
 ## キーバインドをemacs風に
