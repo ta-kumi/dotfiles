@@ -1,2 +1,2 @@
-.vim/dein/*
-!.vim/dein/userconfig
+.config/nvim/dein/*
+!.config/nvim/dein/userconfig

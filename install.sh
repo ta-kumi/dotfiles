@@ -2,16 +2,14 @@
 
 DOTPATH=~/.dotfiles
 
-for f in .??*
+for file in .??*
 do
-    [ "$f" = ".git" ] && continue
+    [ ${file} = ".git" ] && continue
+	[ ${file} = ".gitignore" ] && continue
+	[ ${file} = ".config" ] && continue
 
-    ln -snfv "$DOTPATH/$f" "$HOME"/"$f"
+    ln -snfv $DOTPATH/${file} ${HOME}/${file}
 done
 
-# neovim対応
-if [[ ! -e ${HOME}/.config/nvim/ ]]; then
-	mkdir -p ${HOME}/.config/nvim/
-fi
-ln -snfv ${HOME}/.vim ${HOME}/.config/nvim/
-ln -snfv ${HOME}/.vimrc ${HOME}/.config/nvim/init.vim
+# neovim
+ln -snfv ${DOTPATH}/.config/nvim ${HOME}/.config/nvim
