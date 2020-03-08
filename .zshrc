@@ -6,6 +6,9 @@ export XDG_CONFIG_HOME=$HOME/.config
 ## path設定
 path=($HOME/local/bin $path)
 path=($HOME/bin $path)
+## GTAGS設定
+export GTAGSFORCECPP=1
+
 # メタ文字対策
 setopt nonomatch
 
