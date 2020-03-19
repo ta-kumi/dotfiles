@@ -1,0 +1,26 @@
+{
+  "settingsVersion": "1.66",
+  "exclusionRules": [
+    {
+      "pattern": "https?://mail.google.com/*",
+      "passKeys": ""
+    }
+  ],
+  "filterLinkHints": false,
+  "waitForEnterForFilteredHints": true,
+  "hideHud": false,
+  "keyMappings": "# Cusotm Key\nunmapAll\n\nmap j scrollDown\nmap k scrollUp\nmap d scrollPageDown\nmap u scrollPageUp\nmap h goBack\nmap l goForward\n\nmap gg scrollToTop\nmap G scrollToBottom\nmap gi focusInput\nmap gf nextFrame\nmap gF mainFrame\nmap ge Vomnibar.activateEditUrl\nmap gE Vomnibar.activateEditUrlInNewTab\n\nmap r reload\nmap y copyCurrentUrl\nmap p openCopiedUrlInCurrentTab\nmap v enterVisualMode\nmap V enterVisualLineMode\nmap f LinkHints.activateMode\nmap F LinkHints.activateModeToOpenInNewTab\nmap i Vomnibar.activate\nmap o Vomnibar.activateInNewTab\nmap b Vomnibar.activateBookmarks\nmap B Vomnibar.activateBookmarksInNewTab\n\nmap ^ firstTab\nmap $ lastTab\nmap H previousTab\nmap L nextTab\nmap X restoreTab\nmap x removeTab\nmap t createTab\nmap P goPrevious\nmap N goNext\nmap < moveTabLeft\nmap > moveTabRight",
+  "linkHintCharacters": "asdwerjkluio",
+  "linkHintNumbers": "0123456789",
+  "newTabUrl": "https://www.google.com/search?q=",
+  "nextPatterns": "next,more,newer,>,›,→,»,≫,>>,次へ,次のページへ",
+  "previousPatterns": "prev,previous,back,older,<,‹,←,«,≪,<<,前へ,前のページへ",
+  "regexFindMode": false,
+  "ignoreKeyboardLayout": false,
+  "scrollStepSize": 60,
+  "smoothScroll": true,
+  "grabBackFocus": true,
+  "searchEngines": "# Custom search\nw: https://www.wikipedia.org/w/index.php?title=Special:Search&search=%s Wikipedia\ng: https://www.google.com/search?q=%s Google\ngm: https://www.google.com/maps?q=%s Google maps\ny: https://www.youtube.com/results?search_query=%s Youtube\nn: https://www.nicovideo.jp/search/%s?ref=nicotop_search niconico\na: https://www.amazon.com/s/?field-keywords=%s Amazon",
+  "searchUrl": "https://www.google.com/search?q=",
+  "userDefinedLinkHintCss": "div > .vimiumHintMarker {\n/* linkhint boxes */\nbackground: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFF785),\n  color-stop(100%,#FFC542));\nborder: 1px solid #E3BE23;\n}\n\ndiv > .vimiumHintMarker span {\n/* linkhint text */\ncolor: black;\nfont-weight: bold;\nfont-size: 12px;\n}\n\ndiv > .vimiumHintMarker > .matchingCharacter {\n}"
+}
