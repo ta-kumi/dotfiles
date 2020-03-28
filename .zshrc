@@ -6,8 +6,6 @@ export XDG_CONFIG_HOME=$HOME/.config
 ## path設定
 path=($HOME/local/bin $path)
 path=($HOME/bin $path)
-## GTAGS設定
-export GTAGSFORCECPP=1
 
 # メタ文字対策
 setopt nonomatch
@@ -119,6 +117,12 @@ zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
+
+# プログラミング関係
+## GTAGS設定
+export GTAGSFORCECPP=1
+## CTAGS設定
+alias ctags-vscode='ctags -R --fields=+nKz --languages=-C,-C++,-C#,-Java,-JavaScript,-PHP,-Ruby,-Python'
 
 # その他
 ## デフォルトシェルの設定
