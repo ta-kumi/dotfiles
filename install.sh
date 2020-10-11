@@ -12,10 +12,15 @@ do
 done
 ln -snfv ${DOTPATH}/.config/nvim ${HOME}/.config/nvim
 
+# tmux plugin
+if [[ ! -d ${HOME}/.tmux/plugins/tpm ]]; then
+  git clone https://github.com/tmux-plugins/tpm ${HOME}/.tmux/plugins/tpm
+fi
+
 # dir
-if [[ ! -e ${HOME}/local ]]; then
+if [[ ! -d ${HOME}/local ]]; then
 	mkdir ${HOME}/local
 fi
-if [[ ! -e ${HOME}/bin ]]; then
+if [[ ! -d ${HOME}/bin ]]; then
 	mkdir ${HOME}/bin
 fi
