@@ -124,6 +124,11 @@ bindkey "^N" history-beginning-search-forward-end
 export GTAGSFORCECPP=1
 ## CTAGS設定
 alias ctags-vscode='ctags -R --fields=+nKz --languages=-C,-C++,-C#,-Java,-JavaScript,-PHP,-Ruby,-Python'
+## anyenv
+if [[ -d $HOME/.anyenv ]]; then
+	export PATH="$HOME/.anyenv/bin:$PATH"
+	eval "$(anyenv init -)"
+fi
 
 # その他
 ## デフォルトシェルの設定
