@@ -4,13 +4,17 @@
     {
       "pattern": "https?://mail.google.com/*",
       "passKeys": ""
+    },
+    {
+      "pattern": "https?://www.e-typing.ne.jp/*",
+      "passKeys": ""
     }
   ],
   "filterLinkHints": false,
   "waitForEnterForFilteredHints": true,
   "hideHud": false,
-  "keyMappings": "# Cusotm Key\nunmapAll\n\nmap j scrollDown\nmap k scrollUp\nmap d scrollPageDown\nmap u scrollPageUp\nmap h goBack\nmap l goForward\n\nmap gg scrollToTop\nmap G scrollToBottom\nmap gi focusInput\nmap gf nextFrame\nmap gF mainFrame\nmap ge Vomnibar.activateEditUrl\nmap gE Vomnibar.activateEditUrlInNewTab\n\nmap r reload\nmap y copyCurrentUrl\nmap p openCopiedUrlInCurrentTab\nmap v enterVisualMode\nmap V enterVisualLineMode\nmap f LinkHints.activateMode\nmap F LinkHints.activateModeToOpenInNewTab\nmap i Vomnibar.activate\nmap o Vomnibar.activateInNewTab\nmap b Vomnibar.activateBookmarks\nmap B Vomnibar.activateBookmarksInNewTab\n\nmap ^ firstTab\nmap $ lastTab\nmap H previousTab\nmap L nextTab\nmap X restoreTab\nmap x removeTab\nmap t createTab\nmap P goPrevious\nmap N goNext\nmap < moveTabLeft\nmap > moveTabRight",
-  "linkHintCharacters": "asdwerjkluio",
+  "keyMappings": "# Cusotm Key\nunmapAll\n\nmap j scrollDown\nmap k scrollUp\nmap d scrollPageDown\nmap u scrollPageUp\nmap gg scrollToTop\nmap G scrollToBottom\n\nmap gi focusInput\nmap v enterVisualMode\n\nmap r reload\nmap y copyCurrentUrl\nmap e Vomnibar.activateEditUrl\nmap E Vomnibar.activateEditUrlInNewTab\n\nmap h goBack\nmap l goForward\nmap H goPrevious\nmap L goNext\n\nmap s LinkHints.activateMode\nmap S LinkHints.activateModeToOpenInNewTab\nmap i Vomnibar.activate\nmap o Vomnibar.activateInNewTab\nmap b Vomnibar.activateBookmarks\nmap B Vomnibar.activateBookmarksInNewTab\n\nmap ^ firstTab\nmap $ lastTab\nmap p previousTab\nmap n nextTab\nmap P moveTabLeft\nmap N moveTabRight\nmap t createTab\nmap x removeTab\nmap X restoreTab",
+  "linkHintCharacters": "werdfxcvtgbnhyjkluiom",
   "linkHintNumbers": "0123456789",
   "newTabUrl": "https://www.google.com/search?q=",
   "nextPatterns": "next,more,newer,>,›,→,»,≫,>>,次へ,次のページへ",
