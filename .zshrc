@@ -7,6 +7,17 @@ export XDG_CONFIG_HOME=$HOME/.config
 path=($HOME/local/bin $path)
 path=($HOME/.local/bin $path)
 path=($HOME/bin $path)
+## mac gnu commands path設定
+PATH="PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH""
+MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
+MANPATH="/usr/local/opt/findutils/libexec/gnuman:$MANPATH"
+PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+MANPATH="/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH"
+PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
+MANPATH="/usr/local/opt/gnu-tar/libexec/gnuman:$MANPATH"
+PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+MANPATH="/usr/local/opt/grep/libexec/gnuman:$MANPATH"
 
 # メタ文字対策
 setopt nonomatch
@@ -25,6 +36,45 @@ bindkey "5C" forward-word
 bindkey "5D" backward-word
 ## Ctrl-Dでログアウトしない
 setopt ignoreeof
+
+# エイリアス設定
+## sudo
+alias sudo='sudo '
+## cd
+alias ...='cd ../..'
+alias ....='cd ../../..'
+## ls
+alias la='ls -a'
+alias ll='ls -lh'
+alias lla='ls -lha'
+alias lls='ls -lhS'
+alias llt='ls -lht'
+## files
+alias md='mkdir -p'
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+## find
+alias fn='find -iname'
+## grep
+alias gr='grep --color -irn'
+alias gf='grep --color -irl'
+## global alias
+alias -g L='| less'
+alias -g H='| head -n'
+alias -g T='| tail -n'
+alias -g G='| grep --color -i'
+## commands
+alias to='touch'
+alias wi='which'
+alias g='git'
+## alias expand
+function expand-alias() {
+	zle _expand_alias
+	zle self-insert
+}
+zle -N expand-alias
+bindkey -M main ' ' expand-alias
 
 # 色設定
 ## 色を使用
@@ -68,7 +118,6 @@ zstyle ':vcs_info:*' actionformats '[%b|%a]'
 precmd () { vcs_info }
 RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
 
-
 # 補完機能系
 ## 補完有効化
 autoload -Uz compinit && compinit
@@ -80,7 +129,6 @@ setopt auto_list
 setopt auto_menu
 ## tab,矢印キーで補完選択
 zstyle ':completion:*:default' menu select=1
-
 
 # 移動系
 ## ディレクトリ名だけで移動
