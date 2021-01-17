@@ -14,26 +14,3 @@
 	ff = false
 [color]
 	ui = true
-[alias]
-  s = status
-  a = add
-  u = restore --staged
-  c = commit
-  cm = commit -m
-  rs = reset
-  rb = rebase -i
-  sv = stash
-  ld = stash pop
-  d = diff
-  dc = diff --cached
-  ch = checkout
-  chb = checkout -b
-  b = branch
-  bm = branch --merged
-  bn = branch --no-merged
-  mr = merge
-  cp = cherry-pick -e
-  dump = cat-file -p
-  cl = clone
-  ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)"
-  pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)"

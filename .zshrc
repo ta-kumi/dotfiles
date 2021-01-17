@@ -64,10 +64,32 @@ alias -g L='| less'
 alias -g H='| head -n'
 alias -g T='| tail -n'
 alias -g G='| grep --color -i'
+## git
+alias gs='git status'
+alias ga='git add'
+alias gu='git restore --staged'
+alias gc='git commit'
+alias gcm='git commit -m'
+alias grs='git reset'
+alias grb='git rebase -i'
+alias gsv='git stash'
+alias gld='git stash pop'
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias gch='git checkout'
+alias gchb='git checkout -b'
+alias gb='git branch'
+alias gbm='git branch --merged'
+alias gbn='git branch --no-merged'
+alias gmr='git merge'
+alias gcp='git cherry-pick -e'
+alias gdump='git cat-file -p'
+alias gcl='git clone'
+alias gps="git push origin $(git rev-parse --abbrev-ref HEAD)"
+alias gpl="git pull origin $(git rev-parse --abbrev-ref HEAD)"
 ## commands
 alias to='touch'
 alias wi='which'
-alias g='git'
 ## alias expand
 function expand-alias() {
 	zle _expand_alias
