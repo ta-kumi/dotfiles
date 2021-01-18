@@ -85,8 +85,8 @@ alias gmr='git merge'
 alias gcp='git cherry-pick -e'
 alias gdump='git cat-file -p'
 alias gcl='git clone'
-alias gps="git push origin $(git rev-parse --abbrev-ref HEAD)"
-alias gpl="git pull origin $(git rev-parse --abbrev-ref HEAD)"
+alias gps='git push origin $(git rev-parse --abbrev-ref HEAD)'
+alias gpl='git pull origin $(git rev-parse --abbrev-ref HEAD)'
 ## commands
 alias to='touch'
 alias wi='which'
