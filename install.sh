@@ -10,7 +10,6 @@ do
 
     ln -snfv $DOTPATH/${file} ${HOME}/${file}
 done
-ln -snfv ${DOTPATH}/.config/nvim ${HOME}/.config/nvim
 
 # tmux plugin
 if [[ ! -d ${HOME}/.tmux/plugins/tpm ]]; then
