@@ -4,16 +4,16 @@
 DOTPATH=~/.dotfiles
 for file in .??*
 do
-    [ ${file} = ".git" ] && continue
+	[ ${file}[ ${file} = ".git" ] && continue
 	[ ${file} = ".gitignore" ] && continue
 	[ ${file} = ".config" ] && continue
 
-    ln -snfv $DOTPATH/${file} ${HOME}/${file}
+	ln -snfv $DOTPATH/${file} ${HOME}/${file}
 done
 
 # tmux plugin
 if [[ ! -d ${HOME}/.tmux/plugins/tpm ]]; then
-  git clone https://github.com/tmux-plugins/tpm ${HOME}/.tmux/plugins/tpm
+	git clone https://github.com/tmux-plugins/tpm ${HOME}/.tmux/plugins/tpm
 fi
 
 # dir
