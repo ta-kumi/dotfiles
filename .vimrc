@@ -159,6 +159,8 @@ call plug#begin('~/.vim/plugged')
 	Plug 'bronson/vim-trailing-whitespace'  " 末尾の全角と半角の空白文字を可視化
 	Plug 'vim-airline/vim-airline'  " ステータスライン強化
 	Plug 'vim-airline/vim-airline-themes'  " ステータスラインカラースキーム
+	Plug 'psliwka/vim-smoothie'  " スムーズスクロール
+	Plug 'machakann/vim-highlightedyank'  " yank時にハイライトする
 	" 便利系
 	Plug 'easymotion/vim-easymotion'  " easy-motion
 	Plug 'tpope/vim-surround'  "" surround
@@ -197,6 +199,9 @@ if s:is_plugged("vim-airline")
 	set laststatus=2
 	set showtabline=2
 	let g:airline_theme = 'molokai'
+endif
+if s:is_plugged("vim-highlightedyank")
+	let g:highlightedyank_highlight_duration = 150
 endif
 if s:is_plugged("vim-easymotion")
 	let g:EasyMotion_do_mapping = 0
