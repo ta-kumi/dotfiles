@@ -4,6 +4,7 @@ set encoding=utf-8
 "" マルチバイトを扱う際の設定
 scriptencoding utf-8
 "" 保存時の文字コード
+set modifiable
 set fileencoding=utf-8
 "" 読み込み時の文字コードの自動判別. 左側が優先される
 set fileencodings=ucs-boms,utf-8,euc-jp,cp932
@@ -21,8 +22,6 @@ set autoread
 set hidden
 "" 入力中のコマンドをステータスに表示する
 set showcmd
-"" クリップボード貼り付け有効化
-set clipboard+=unnamedplus
 
 " カーソル系
 "" カーソルの左右移動で行末から次の行の行頭への移動が可能になる
@@ -66,7 +65,6 @@ let loaded_matchparen = 1
 function! ZenkakuSpace()
 	highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 endfunction
-
 if has('syntax')
 	augroup ZenkakuSpace
 		autocmd!
@@ -86,9 +84,9 @@ set history=5000
 "" インデントにTabを使用
 set noexpandtab
 "" 画面上でタブ文字が占める幅
-set tabstop=8
+set tabstop=4
 "" Tabに変換するスペースの数
-set softtabstop=8
+set softtabstop=4
 "" 改行時に前の行のインデントを継続する
 set autoindent
 "" smarttab
@@ -96,7 +94,7 @@ set smarttab
 "" 改行時に前の行の構文をチェックし次の行のインデントを増減する
 set smartindent
 "" smartindentで増減する幅
-set shiftwidth=8
+set shiftwidth=4
 "" ファイル別インデント設定
 augroup fileTypeIndent
 	autocmd!
@@ -114,7 +112,7 @@ set smartcase
 "" 検索結果をハイライト
 set hlsearch
 "" ESC連打でハイライト解除
-nmap <Esc><Esc><Esc> :nohlsearch<CR><Esc>
+nnoremap <silent><Esc><Esc> :nohlsearch<CR><Esc>
 
 " マウス操作の有効化
 if has('mouse')
@@ -142,4 +140,73 @@ if &term =~ "xterm"
 	endfunction
 
 	inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
+endif
+
+" vim-plug
+"" install vim-plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
+"" install plugins
+call plug#begin('~/.vim/plugged')
+	" 表示系
+	Plug 'tomasr/molokai'  " カラースキーム
+	Plug 'Yggdroot/indentLine'  " インデント表示
+	Plug 'bronson/vim-trailing-whitespace'  " 末尾の全角と半角の空白文字を可視化
+	Plug 'vim-airline/vim-airline'  " ステータスライン強化
+	Plug 'vim-airline/vim-airline-themes'  " ステータスラインカラースキーム
+	" 便利系
+	Plug 'easymotion/vim-easymotion'  " easy-motion
+	Plug 'tpope/vim-surround'  "" surround
+	Plug 'tpope/vim-commentary'  "" コメントコマンド
+	Plug 'jiangmiao/auto-pairs'  " カッコ自動補完
+	Plug 'osyo-manga/vim-anzu'  " 検索ヒット数表示
+	" git系
+	Plug 'airblade/vim-gitgutter'  " 変更箇所を表示
+call plug#end()
+
+" vim-plug plugin setting
+"" check the specified plugin is installed
+function s:is_plugged(name)
+	if exists('g:plugs') && has_key(g:plugs, a:name) && isdirectory(g:plugs[a:name].dir)
+		return 1
+	else
+		return 0
+	endif
+endfunction
+"" settings
+if s:is_plugged("molokai")
+	syntax on
+	colorscheme molokai
+	autocmd GUIEnter * colorscheme molokai
+	autocmd ColorScheme * highlight Comment ctermfg=102
+	autocmd ColorScheme *highlight Visual  ctermbg=236
+	set t_Co=256
+endif
+if s:is_plugged("indentLine")
+	set list listchars=tab:\¦\ 
+	let g:indentLine_char = '¦'
+	let g:indentLine_leadingSpaceEnabled = 1
+	let g:indentLine_leadingSpaceChar = '･'
+endif
+if s:is_plugged("vim-airline")
+	set laststatus=2
+	set showtabline=2
+	let g:airline_theme = 'molokai'
+endif
+if s:is_plugged("vim-easymotion")
+	let g:EasyMotion_do_mapping = 0
+	let g:EasyMotion_smartcase = 1
+	nmap s <Plug>(easymotion-s2)
+endif
+if s:is_plugged("vim-anzu")
+	nmap n <Plug>(anzu-n-with-echo)
+	nmap N <Plug>(anzu-N-with-echo)
+	nmap * <Plug>(anzu-star-with-echo)
+	nmap # <Plug>(anzu-sharp-with-echo)
+	set statusline=%{anzu#search_status()}
 endif
