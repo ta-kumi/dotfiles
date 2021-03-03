@@ -4,9 +4,8 @@
 DOTPATH=~/.dotfiles
 for file in .??*
 do
-	[ ${file}[ ${file} = ".git" ] && continue
+	[ ${file} = ".git" ] && continue
 	[ ${file} = ".gitignore" ] && continue
-	[ ${file} = ".config" ] && continue
 
 	ln -snfv $DOTPATH/${file} ${HOME}/${file}
 done
