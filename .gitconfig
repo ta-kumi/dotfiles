@@ -1,6 +1,5 @@
-[user]
-	name = ta-kumi
-	email = 33344708+ta-kumi@users.noreply.github.com
+[include]
+    path = ~/.gitconfig.local
 [core]
 	quotepath = false
 	ignorecase = false
