@@ -141,3 +141,86 @@ if &term =~ "xterm"
 
 	inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
 endif
+
+" vim-plug
+"" install vim-plug start
+let plug_install = 0
+let autoload_plug_path = stdpath('config') . '/autoload/plug.vim'
+if !filereadable(autoload_plug_path)
+    silent exe '!curl -fL --create-dirs -o ' . autoload_plug_path . 
+        \ ' https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+    execute 'source ' . fnameescape(autoload_plug_path)
+    let plug_install = 1
+endif
+unlet autoload_plug_path
+
+"" install plugins
+call plug#begin('~/.config/nvim/plugins')
+	" 表示系
+	Plug 'tomasr/molokai'  " カラースキーム
+	Plug 'Yggdroot/indentLine'  " インデント表示
+	Plug 'bronson/vim-trailing-whitespace'  " 末尾の全角と半角の空白文字を可視化
+	Plug 'vim-airline/vim-airline'  " ステータスライン強化
+	Plug 'vim-airline/vim-airline-themes'  " ステータスラインカラースキーム
+	Plug 'psliwka/vim-smoothie'  " スムーズスクロール
+	Plug 'machakann/vim-highlightedyank'  " yank時にハイライトする
+	" 便利系
+	Plug 'easymotion/vim-easymotion'  " easy-motion
+	Plug 'tpope/vim-surround'  "" surround
+	Plug 'tpope/vim-commentary'  "" コメントコマンド
+	Plug 'jiangmiao/auto-pairs'  " カッコ自動補完
+	Plug 'osyo-manga/vim-anzu'  " 検索ヒット数表示
+	" git系
+	Plug 'airblade/vim-gitgutter'  " 変更箇所を表示
+call plug#end()
+
+"" install vim-plug end
+if plug_install
+	PlugInstall --sync
+endif
+unlet plug_install
+
+" vim-plug plugin setting
+"" check the specified plugin is installed
+function s:is_plugged(name)
+	if exists('g:plugs') && has_key(g:plugs, a:name) && isdirectory(g:plugs[a:name].dir)
+		return 1
+	else
+		return 0
+	endif
+endfunction
+"" settings
+if s:is_plugged("molokai")
+	syntax on
+	colorscheme molokai
+	autocmd GUIEnter * colorscheme molokai
+	autocmd ColorScheme * highlight Comment ctermfg=102
+	autocmd ColorScheme *highlight Visual  ctermbg=236
+	set t_Co=256
+endif
+if s:is_plugged("indentLine")
+	set list listchars=tab:\¦\ 
+	let g:indentLine_char = '¦'
+	let g:indentLine_leadingSpaceEnabled = 1
+	let g:indentLine_leadingSpaceChar = '･'
+endif
+if s:is_plugged("vim-airline")
+	set laststatus=2
+	set showtabline=2
+	let g:airline_theme = 'molokai'
+endif
+if s:is_plugged("vim-highlightedyank")
+	let g:highlightedyank_highlight_duration = 150
+endif
+if s:is_plugged("vim-easymotion")
+	let g:EasyMotion_do_mapping = 0
+	let g:EasyMotion_smartcase = 1
+	nmap s <Plug>(easymotion-s2)
+endif
+if s:is_plugged("vim-anzu")
+	nmap n <Plug>(anzu-n-with-echo)
+	nmap N <Plug>(anzu-N-with-echo)
+	nmap * <Plug>(anzu-star-with-echo)
+	nmap # <Plug>(anzu-sharp-with-echo)
+	set statusline=%{anzu#search_status()}
+endif

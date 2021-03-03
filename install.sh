@@ -6,9 +6,11 @@ for file in .??*
 do
 	[ ${file} = ".git" ] && continue
 	[ ${file} = ".gitignore" ] && continue
+	[ ${file} = ".config" ] && continue
 
 	ln -snfv $DOTPATH/${file} ${HOME}/${file}
 done
+ln -snfv ${DOTPATH}/.config/nvim ${HOME}/.config/nvim
 
 # tmux plugin
 if [[ ! -d ${HOME}/.tmux/plugins/tpm ]]; then

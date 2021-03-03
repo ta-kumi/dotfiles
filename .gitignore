@@ -1,2 +1,2 @@
-.config/nvim/dein/*
-!.config/nvim/dein/userconfig
+.config/nvim/autoload/
+.config/nvim/plugins/
