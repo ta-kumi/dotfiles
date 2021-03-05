@@ -40,9 +40,6 @@ setopt ignoreeof
 # エイリアス設定
 ## sudo
 alias sudo='sudo '
-## cd
-alias ...='cd ../..'
-alias ....='cd ../../..'
 ## ls
 alias la='ls -a'
 alias ll='ls -lh'
@@ -58,7 +55,7 @@ alias mv='mv -i'
 alias fn='find -iname'
 ## grep
 alias gr='grep --color -irn'
-alias gf='grep --color -irl'
+alias grf='grep --color -irl'
 ## global alias
 alias -g L='| less'
 alias -g H='| head -n'
@@ -86,6 +83,7 @@ alias gmr='git merge'
 alias gcp='git cherry-pick -e'
 alias gdump='git cat-file -p'
 alias gcl='git clone'
+alias gfe='git fetch --prune'
 alias gps='git push origin $(git rev-parse --abbrev-ref HEAD)'
 alias gpl='git pull origin $(git rev-parse --abbrev-ref HEAD)'
 alias gl='git log --graph --decorate --all'
@@ -104,7 +102,9 @@ alias dcrm='docker container rm'
 alias dcpr='docker container prune'
 alias dsta='docker start'
 alias dsto='docker stop'
+alias dr='docker run --rm -it *image* /bin/bash'
 alias de='docker exec -it *container* /bin/bash'
+alias db='docker build -t *imagename* .'
 alias du='docker-compose up -d'
 alias dd='docker-compose down'
 ## commands
