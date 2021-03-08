@@ -147,10 +147,10 @@ endif
 let plug_install = 0
 let autoload_plug_path = stdpath('config') . '/autoload/plug.vim'
 if !filereadable(autoload_plug_path)
-    silent exe '!curl -fL --create-dirs -o ' . autoload_plug_path . 
-        \ ' https://raw.github.com/junegunn/vim-plug/master/plug.vim'
-    execute 'source ' . fnameescape(autoload_plug_path)
-    let plug_install = 1
+	silent exe '!curl -fL --create-dirs -o ' . autoload_plug_path . 
+		\ ' https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+	execute 'source ' . fnameescape(autoload_plug_path)
+	let plug_install = 1
 endif
 unlet autoload_plug_path
 
@@ -192,10 +192,10 @@ endfunction
 "" settings
 if s:is_plugged("molokai")
 	syntax on
+	autocmd ColorScheme * highlight Comment ctermfg=102
+	autocmd ColorScheme * highlight Visual  ctermbg=236
 	colorscheme molokai
 	autocmd GUIEnter * colorscheme molokai
-	autocmd ColorScheme * highlight Comment ctermfg=102
-	autocmd ColorScheme *highlight Visual  ctermbg=236
 	set t_Co=256
 endif
 if s:is_plugged("indentLine")
