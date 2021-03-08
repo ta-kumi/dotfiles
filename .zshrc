@@ -61,6 +61,13 @@ alias -g L='| less'
 alias -g H='| head -n'
 alias -g T='| tail -n'
 alias -g G='| grep --color -i'
+## tmux
+alias t='tmux'
+alias tl='tmux ls'
+alias tn='tmux new -s'
+alias ta='tmux a -t'
+alias tk='tmux kill-session -t'
+alias tka='tmux kill-server'
 ## git
 alias g='git'
 alias gs='git status'
